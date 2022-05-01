@@ -1,0 +1,6 @@
+<a href="/users/sign_out" data-turbo-method="delete">Sign Out</a>
+<h1>Resources</h1>
+<%= button_to "create resource", resources_path %>
+<% @resources.each do |resource| %>
+  <p><%= resource.secret %></p>
+<% end %>
