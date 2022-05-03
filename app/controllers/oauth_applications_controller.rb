@@ -1,4 +1,6 @@
 class OauthApplicationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @oauth_applications = current_user.oauth_applications
     @application = Doorkeeper::Application.new

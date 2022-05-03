@@ -1,6 +1,5 @@
 <p>
-  <a href="/">Dashboard</a>
-  <a href="/resources">Resources</a>
+  <a href="/">Resources</a>
   Applications
   <a href="/users/sign_out">Sign Out</a>
 </p>
@@ -13,19 +12,19 @@
       <% end %>
     </ul>
   <% end %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :redirect_uri %>
-    <%= f.text_field :redirect_uri %>
+  <div class="mb-3">
+    <%= f.label :redirect_uri, class: "form-label" %>
+    <%= f.text_field :redirect_uri, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :scopes %>
-    <%= f.text_field :scopes %>
+  <div class="mb-3">
+    <%= f.label :scopes, class: "form-label" %>
+    <%= f.text_field :scopes, class: "form-control" %>
   </div>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
 <% @oauth_applications.each do |oauth_application| %>
   <p>

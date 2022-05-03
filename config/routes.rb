@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   use_doorkeeper
   devise_for :users
 
-  root "dashboard#index"
+  root "resources#index"
 
   resources :resources
   resources :oauth_applications
