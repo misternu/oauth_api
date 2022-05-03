@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "dashboard#index"
 
   resources :resources
+  resources :oauth_applications
   
   namespace :api do
     resources :resources, only: [:index]
