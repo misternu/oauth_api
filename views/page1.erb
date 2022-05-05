@@ -1,0 +1,14 @@
+<h1>Page #1</h1>
+
+<% if @message.kind_of?(Array) %>
+  <% @message.each do |resource| %>
+    <p>
+      <%= resource['id'] %>
+      <%= resource['secret'] %>
+    </p>
+  <% end %>
+<% else %>
+  <%= @message %>
+<% end %>
+
+<a href="/page_2">Verify if session persists</a>

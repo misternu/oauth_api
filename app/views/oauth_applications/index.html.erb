@@ -26,11 +26,14 @@
   </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
-<% @oauth_applications.each do |oauth_application| %>
-  <p>
-    <%= oauth_application.name %>
-    <%= oauth_application.redirect_uri %></br>
-    uid: <%= oauth_application.uid %></br>
-    secret: <%= oauth_application.secret %>
-  </p>
-<% end %>
+
+<div class="list-group mt-3">
+  <% @oauth_applications.each do |oauth_application| %>
+    <p class="list-group-item">
+      <%= oauth_application.name %>
+      <%= oauth_application.redirect_uri %></br>
+      uid: <%= oauth_application.uid %></br>
+      secret: <%= oauth_application.secret %>
+    </p>
+  <% end %>
+</div>

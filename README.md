@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+taken from doorkeeper tutorials and:
+https://github.com/doorkeeper-gem/doorkeeper-provider-app
+https://www.honeybadger.io/blog/oauth2-ruby/
 
-Things you may want to cover:
+oauth provider and resource server with `bundle exec rails s`
+oauth client and resource consumer with `ruby app.rb`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+provider at localhost:3000
+client at localhost:4567
