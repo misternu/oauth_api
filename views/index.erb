@@ -1,0 +1,14 @@
+<h1>Resources</h1>
+
+<p><%= flash[:message] %></p>
+
+<% (@resources || []).each do |resource| %>
+  <p>
+    <%= resource['id'] %>
+    <%= resource['secret'] %>
+  </p>
+<% end %>
+
+<% if !session[:access_token] %>
+  <a href="/auth/test">Click here to authenticate</a>
+<% end %>

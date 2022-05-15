@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/flash'
 require 'oauth2'
 require 'json'
 require 'dotenv/load'
@@ -17,18 +18,17 @@ end
 get '/auth/test/callback' do
   access_token = client.auth_code.get_token(params[:code], redirect_uri: redirect_uri)
   session[:access_token] = access_token.token
-  @message = "Successfully authenticated with the server"
-  erb :success
+  flash[:message] = "Successfully authenticated with the server"
+  redirect '/'
 end
-
-get '/page_2' do
-  @message = get_response('resources')
-  erb :success
-end
-
-get '/page_1' do
-  @message = get_response('resources')
-  erb :page1
+ 
+get '/' do
+  if session[:access_token]
+    @resources = get_response('v1/resources')
+  else
+    flash.now[:message] = 'You need an access token'
+  end
+  erb :index
 end
 
 def get_response(url)
