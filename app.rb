@@ -24,17 +24,29 @@ end
  
 get '/' do
   if session[:access_token]
-    @resources = get_response('v1/resources')
+    @resources = get_resources
   else
     flash.now[:message] = 'You need an access token'
   end
   erb :index
 end
 
-def get_response(url)
-  access_token = OAuth2::AccessToken.new(client, session[:access_token])
-  p access_token
-  JSON.parse(access_token.get("/api/#{url}").body)
+delete '/resources/:id' do
+  flash[:message] = "You deleted resource #{params[:id]}"
+  delete_resource(params[:id])
+  redirect '/'
+end
+
+def get_resources
+  JSON.parse(access_token.get("/api/v1/resources").body)
+end
+
+def delete_resource(id)
+  access_token.delete("/api/v1/resources/#{id}")
+end
+
+def access_token
+  OAuth2::AccessToken.new(client, session[:access_token])
 end
 
 def redirect_uri

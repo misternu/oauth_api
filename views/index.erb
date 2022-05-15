@@ -19,8 +19,17 @@
     <ul class="list-group mt-3">
       <% (@resources || []).each do |resource| %>
         <li class="list-group-item">
-          <%= resource['id'] %>
-          <%= resource['secret'] %>
+          <div class="row justify-content-between">
+            <div class="col-3 p-2">
+              <%= resource['secret'] %>
+            </div>
+            <div class="col-2">
+              <form action="/resources/<%= resource['id'] %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete Resource" class="btn btn-primary">
+              </form>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>
