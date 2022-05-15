@@ -1,14 +1,32 @@
-<h1>Resources</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oauth Client</title>
 
-<p><%= flash[:message] %></p>
-
-<% (@resources || []).each do |resource| %>
-  <p>
-    <%= resource['id'] %>
-    <%= resource['secret'] %>
-  </p>
-<% end %>
-
-<% if !session[:access_token] %>
-  <a href="/auth/test">Click here to authenticate</a>
-<% end %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container mt-3">
+    <h1>Resources Client</h1>
+    <% if flash[:message] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:message] %>
+      </div>
+    <% end %>
+    <ul class="list-group mt-3">
+      <% (@resources || []).each do |resource| %>
+        <li class="list-group-item">
+          <%= resource['id'] %>
+          <%= resource['secret'] %>
+        </li>
+      <% end %>
+    </ul>
+    <% if !session[:access_token] %>
+      <a href="/auth/test">Click here to authenticate</a>
+    <% end %>
+  </div>
+</body>
+</html>
